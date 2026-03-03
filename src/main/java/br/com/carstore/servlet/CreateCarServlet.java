@@ -11,6 +11,16 @@ import java.io.IOException;
 public class CreateCarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        
+        String carName = req.getParameter("car-name");
+
+        String jsonResponse = "{\"nome\": \"" + carName + "\"}";
+
+        System.out.println("Processando objeto JSON: " + jsonResponse);
+
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+
+        resp.getWriter().write(jsonResponse);
     }
 }
